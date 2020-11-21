@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+class EventTableViewCell: UITableViewCell, Reusable {
   
 }

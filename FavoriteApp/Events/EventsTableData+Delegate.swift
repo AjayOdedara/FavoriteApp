@@ -11,7 +11,7 @@ import UIKit
 extension EventsViewController {
  
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 5
+		return viewModel.events.value.count
   }
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

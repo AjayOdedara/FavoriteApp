@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,16 @@
 		9A95C83425698C5700C71357 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C83325698C5700C71357 /* BaseService.swift */; };
 		9A95C83C25698E2000C71357 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C83B25698E2000C71357 /* Result.swift */; };
 		9A95C85A2569988D00C71357 /* EventViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C8592569988D00C71357 /* EventViewConstants.swift */; };
-		9A95C85F25699A3400C71357 /* UITalbeViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C85E25699A3400C71357 /* UITalbeViewExtension.swift */; };
+		9A95C85F25699A3400C71357 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C85E25699A3400C71357 /* UITableViewExtension.swift */; };
 		9A95C86625699AD200C71357 /* EventsTableData+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C86525699AD200C71357 /* EventsTableData+Delegate.swift */; };
 		9A95C87325699BF600C71357 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C87125699BF600C71357 /* EventTableViewCell.swift */; };
 		9A95C87425699BF600C71357 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A95C87225699BF600C71357 /* EventTableViewCell.xib */; };
 		9A95C8822569AC4A00C71357 /* FetchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C8812569AC4A00C71357 /* FetchError.swift */; };
 		9A95C8872569ACFA00C71357 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A95C8862569ACFA00C71357 /* Localizable.strings */; };
+		9A95C88D2569B64E00C71357 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9A95C88C2569B64E00C71357 /* Kingfisher */; };
+		9A95C8922569B66A00C71357 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C8912569B66A00C71357 /* UIImageViewExtension.swift */; };
+		9A95C89E2569BBF500C71357 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C89D2569BBF500C71357 /* EventService.swift */; };
+		9A95C8A32569BCB800C71357 /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A95C8A22569BCB800C71357 /* EventResponse.swift */; };
 		9ACC519B25688FF20037D10C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC519A25688FF20037D10C /* AppDelegate.swift */; };
 		9ACC519D25688FF20037D10C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC519C25688FF20037D10C /* SceneDelegate.swift */; };
 		9ACC519F25688FF20037D10C /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC519E25688FF20037D10C /* EventsViewController.swift */; };
@@ -25,6 +29,9 @@
 		9ACC51A725688FF80037D10C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACC51A525688FF80037D10C /* LaunchScreen.storyboard */; };
 		9ACC51B225688FF80037D10C /* FavoriteAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC51B125688FF80037D10C /* FavoriteAppTests.swift */; };
 		9ACC51BD25688FF80037D10C /* FavoriteAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACC51BC25688FF80037D10C /* FavoriteAppUITests.swift */; };
+		9AFB80802569D1C2009A7EB5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB807E2569D1C1009A7EB5 /* Alert.swift */; };
+		9AFB80812569D1C2009A7EB5 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB807F2569D1C2009A7EB5 /* Bindable.swift */; };
+		9AFB80862569D378009A7EB5 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB80852569D378009A7EB5 /* ServiceConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,12 +56,15 @@
 		9A95C83325698C5700C71357 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		9A95C83B25698E2000C71357 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9A95C8592569988D00C71357 /* EventViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewConstants.swift; sourceTree = "<group>"; };
-		9A95C85E25699A3400C71357 /* UITalbeViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITalbeViewExtension.swift; sourceTree = "<group>"; };
+		9A95C85E25699A3400C71357 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		9A95C86525699AD200C71357 /* EventsTableData+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventsTableData+Delegate.swift"; sourceTree = "<group>"; };
 		9A95C87125699BF600C71357 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		9A95C87225699BF600C71357 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		9A95C8812569AC4A00C71357 /* FetchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchError.swift; sourceTree = "<group>"; };
 		9A95C8862569ACFA00C71357 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9A95C8912569B66A00C71357 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		9A95C89D2569BBF500C71357 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		9A95C8A22569BCB800C71357 /* EventResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponse.swift; sourceTree = "<group>"; };
 		9ACC519725688FF20037D10C /* FavoriteApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoriteApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACC519A25688FF20037D10C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ACC519C25688FF20037D10C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +79,9 @@
 		9ACC51B825688FF80037D10C /* FavoriteAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoriteAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACC51BC25688FF80037D10C /* FavoriteAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAppUITests.swift; sourceTree = "<group>"; };
 		9ACC51BE25688FF80037D10C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AFB807E2569D1C1009A7EB5 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		9AFB807F2569D1C2009A7EB5 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		9AFB80852569D378009A7EB5 /* ServiceConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A95C88D2569B64E00C71357 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +113,9 @@
 		9A95C83225698C3400C71357 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				9AFB80852569D378009A7EB5 /* ServiceConstants.swift */,
 				9A95C83325698C5700C71357 /* BaseService.swift */,
+				9A95C89D2569BBF500C71357 /* EventService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -109,6 +125,7 @@
 			children = (
 				9A95C83B25698E2000C71357 /* Result.swift */,
 				9A95C8812569AC4A00C71357 /* FetchError.swift */,
+				9A95C8A22569BCB800C71357 /* EventResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,12 +133,13 @@
 		9A95C86325699A3900C71357 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9A95C85E25699A3400C71357 /* UITalbeViewExtension.swift */,
+				9A95C85E25699A3400C71357 /* UITableViewExtension.swift */,
+				9A95C8912569B66A00C71357 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		9A95C86425699A6300C71357 /* Features */ = {
+		9A95C86425699A6300C71357 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				9A95C87025699BF600C71357 /* EventCell */,
@@ -130,7 +148,7 @@
 				9A95C8592569988D00C71357 /* EventViewConstants.swift */,
 				9A95C82D25698C0300C71357 /* EventsViewModel.swift */,
 			);
-			path = Features;
+			path = Events;
 			sourceTree = "<group>";
 		};
 		9A95C87025699BF600C71357 /* EventCell */ = {
@@ -168,8 +186,9 @@
 				9ACC51CD256890110037D10C /* App */,
 				9A95C83225698C3400C71357 /* API */,
 				9A95C86325699A3900C71357 /* Extensions */,
+				9AFB807D2569D125009A7EB5 /* Helpers */,
 				9A95C84025698E2C00C71357 /* Models */,
-				9A95C86425699A6300C71357 /* Features */,
+				9A95C86425699A6300C71357 /* Events */,
 				9ACC51A025688FF20037D10C /* Main.storyboard */,
 				9ACC51CE256890560037D10C /* Support Files */,
 			);
@@ -214,6 +233,15 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		9AFB807D2569D125009A7EB5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9AFB807E2569D1C1009A7EB5 /* Alert.swift */,
+				9AFB807F2569D1C2009A7EB5 /* Bindable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,6 +258,9 @@
 			dependencies = (
 			);
 			name = FavoriteApp;
+			packageProductDependencies = (
+				9A95C88C2569B64E00C71357 /* Kingfisher */,
+			);
 			productName = FavoriteApp;
 			productReference = 9ACC519725688FF20037D10C /* FavoriteApp.app */;
 			productType = "com.apple.product-type.application";
@@ -301,6 +332,9 @@
 				Base,
 			);
 			mainGroup = 9ACC518E25688FF10037D10C;
+			packageReferences = (
+				9A95C88B2569B64E00C71357 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 9ACC519825688FF20037D10C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,14 +382,20 @@
 			files = (
 				9ACC519F25688FF20037D10C /* EventsViewController.swift in Sources */,
 				9A95C82E25698C0300C71357 /* EventsViewModel.swift in Sources */,
+				9AFB80862569D378009A7EB5 /* ServiceConstants.swift in Sources */,
+				9A95C8922569B66A00C71357 /* UIImageViewExtension.swift in Sources */,
+				9AFB80802569D1C2009A7EB5 /* Alert.swift in Sources */,
 				9ACC519B25688FF20037D10C /* AppDelegate.swift in Sources */,
 				9A95C83C25698E2000C71357 /* Result.swift in Sources */,
-				9A95C85F25699A3400C71357 /* UITalbeViewExtension.swift in Sources */,
+				9A95C85F25699A3400C71357 /* UITableViewExtension.swift in Sources */,
 				9A95C85A2569988D00C71357 /* EventViewConstants.swift in Sources */,
 				9A95C87325699BF600C71357 /* EventTableViewCell.swift in Sources */,
 				9A95C83425698C5700C71357 /* BaseService.swift in Sources */,
+				9AFB80812569D1C2009A7EB5 /* Bindable.swift in Sources */,
 				9ACC519D25688FF20037D10C /* SceneDelegate.swift in Sources */,
 				9A95C86625699AD200C71357 /* EventsTableData+Delegate.swift in Sources */,
+				9A95C8A32569BCB800C71357 /* EventResponse.swift in Sources */,
+				9A95C89E2569BBF500C71357 /* EventService.swift in Sources */,
 				9A95C8822569AC4A00C71357 /* FetchError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +729,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A95C88B2569B64E00C71357 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A95C88C2569B64E00C71357 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A95C88B2569B64E00C71357 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9ACC518F25688FF10037D10C /* Project object */;
 }
