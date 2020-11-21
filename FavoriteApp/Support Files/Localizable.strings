@@ -1,0 +1,18 @@
+
+// Localizable.strings
+//  FavoriteApp
+//
+//  Created by Ajay Odedra on 20/11/20.
+//
+
+// MARK: - Event View
+
+// Alert View
+"api_failure" = "Loading failed, check network connection";
+"url_failure" = "Failed to load data from url";
+
+"alert_error_title" = "Error";
+"alert_okay_title" = "Ok";
+
+// Navigation title
+"event_list_navigation_bar_title" = "Events";
