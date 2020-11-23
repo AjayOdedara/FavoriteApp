@@ -27,8 +27,8 @@ class BaseService {
 	- Parameter url: Url of product data
 	*/
 	func fetch<T: Decodable>(listOf representable: T.Type,
-													 withURL url: URL?,
-													 completionHandler: @escaping (Result<T, FetchError>) -> Void) {
+							 withURL url: URL?,
+							 completionHandler: @escaping (Result<T, FetchError>) -> Void) {
 		
 		guard let url = url else {
 			completionHandler(.failure(.invalidURL))
@@ -36,7 +36,7 @@ class BaseService {
 		}
 		
 		let task = URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { (data, _, error) -> Void in
-
+			
 			guard error == nil else {
 				completionHandler(.failure(.networkFailed))
 				return
