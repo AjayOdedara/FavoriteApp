@@ -6,75 +6,126 @@
 //
 
 import Foundation
+import Network
+
 class EventViewModel {
 	
 	enum EventTableViewCellType {
 		case normal(model: Event)
 		case error(message: String)
-		case empty
 	}
 	
-	let eventsCells = Bindable([EventTableViewCellType]())
-	var onShowError: ((_ alert: SingleButtonAlert) -> Void)?
-	var showLoadingHud: Bindable = Bindable(false)
 	
-	let eventService: EventService
+	let eventsCells = Bindable([EventTableViewCellType]())
+	var showLoadingHud: Bindable = Bindable(false)
+	var isInternetAvailable: Bool = false
+	let networkMonitor = NWPathMonitor()
+	var onShowError: ((_ alert: SingleButtonAlert) -> Void)?
+	
+	private let eventService: EventService
 	
 	init(withEventService eventService: EventService = EventService()) {
 		self.eventService = eventService
 	}
 	
 	func loadEvetns() {
+		
 		self.showLoadingHud.value = true
 		eventService.fetch { [weak self] (result) in
 			
 			switch result{
 			case .success(let response):
-				
-				guard response.events.count < 0 else {
-					self?.eventsCells.value = [.empty]
+				guard let events = response.events, events.count > 0 else {
+					
 					self?.showLoadingHud.value = false
+					let alert = SingleButtonAlert(title: EventViewConstants.AlertView.alertTitle,
+												  message: EventViewConstants.AlertView.emptyDataMessgae,
+												  action: AlertAction(buttonTitle: EventViewConstants.AlertView.alertOkayButtonTitle, handler: {
+						DLog("Alert action clicked")
+					}))
+					
+					self?.onShowError?(alert)
+					
 					return
 				}
-				self?.saveResponseForOffline(responseEvents: response.events)
-				self?.loadResponse(responseEvents: response.events)
+				
+				self?.saveResponse(toDatabase: response.events ?? [])
+				self?.loadResponse(data: response.events ?? [])
 				
 			case .failure(let error):
 				self?.eventsCells.value = [.error(message: error.localizedDescription.debugDescription )]
 			}
-
+			
 			self?.showLoadingHud.value = false
 		}
 	}
 	
-	func saveResponseForOffline(responseEvents: [Event]) {
+	func saveResponse(toDatabase events: [Event]) {
+		
 		let realm = RealmService.instance
-		responseEvents.forEach { (event) in
-			// Keep as fav if it's favorite in Database
-			let wasFavoriteState = realm.favoriteProducts.filter({$0.isFavorite}).map({$0.id}).contains(event.id)
+		events.forEach { (event) in
+			// Keep as fav if it's favorite in Database: Give true or false in variable
+			let wasFavoriteState = realm.events.filter({$0.isFavorite}).map({$0.id}).contains(event.id)
 			
-			realm.addOrUpdateEvents(event: Event(id: event.id, title: event.title, image: event.image, startDate: event.startDate, isFavorite: wasFavoriteState))
+			realm.addOrUpdateEvents(event: Event(id: event.id,
+												 title: event.title,
+												 image: event.image,
+												 startDate: event.startDate,
+												 isFavorite: wasFavoriteState))
 		}
 	}
-	func loadResponse(responseEvents: [Event]){
-		let realm = RealmService.instance
-		let mappedEvents = realm.favoriteProducts
-			
-			.map{Event(id: $0.id, title: $0.title, image: $0.image, startDate: $0.startDate, isFavorite: $0.isFavorite)}
-			.filter{
-				responseEvents
-				.map{$0.id}.contains($0.id)}
-			
+	
+	func loadResponse(data events: [Event]) {
+		
+		let eventsInDatabase = RealmService.instance.events
+		let mappedEvents = eventsInDatabase
+			.map{Event(id: $0.id,
+					   title: $0.title,
+					   image: $0.image,
+					   startDate: $0.startDate,
+					   isFavorite: $0.isFavorite)}
+			.filter{ events
+					.map{$0.id}.contains($0.id)}
+		
 		self.eventsCells.value.append(contentsOf: mappedEvents.compactMap {
 			.normal(model: $0 as Event)
 		})
 	}
-	func loadDataForOffiline(){
-		let realm = RealmService.instance
-		let mappedEvents = realm.favoriteProducts.map{Event(id: $0.id, title: $0.title, image: $0.image, startDate: $0.startDate, isFavorite: $0.isFavorite)}
+	
+	func retriveOfflineData(){
+		
+		let eventsInDatabase = RealmService.instance.events
+		
+		let mappedEvents = eventsInDatabase.map{Event(id: $0.id,
+													  title: $0.title,
+													  image: $0.image,
+													  startDate: $0.startDate,
+													  isFavorite: $0.isFavorite)}
+		
 		self.eventsCells.value = mappedEvents.compactMap {
 			.normal(model: $0 as Event)
 		}
+	}
+	
+	// MARK: - Network State Monitor
+	func initNetworkCheck() {
+		
+		networkMonitor.pathUpdateHandler = { [weak self] pathUpdateHandler in
+			if pathUpdateHandler.status == .satisfied {
+				self?.isInternetAvailable = true
+				self?.loadEvetns()
+			} else {
+				self?.isInternetAvailable = false
+				self?.retriveOfflineData()
+			}
+		}
+		
+		let queue = DispatchQueue(label: "InternetConnectionMonitor")
+		networkMonitor.start(queue: queue)
+	}
+	
+	deinit {
+		networkMonitor.cancel()
 	}
 }
 
@@ -90,11 +141,9 @@ extension EventViewModel {
 		switch newValue {
 		case .normal(model: let event):
 			event.isFavorite = !(event.isFavorite ?? false)
-			DLog("ID = \(event.title) \nFav = \(String(describing: event.isFavorite))")
-			let realm = RealmService.instance
-			realm.addOrUpdateEvents(event: event)
+			RealmService.instance.addOrUpdateEvents(event: event)
 		default:
-			DLog("empty or error type cell")
+			DLog("Something went wrong in loading data")
 		}
 		self.eventsCells.value[index] = newValue
 	

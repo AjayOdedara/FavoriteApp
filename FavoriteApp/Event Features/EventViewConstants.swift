@@ -14,6 +14,7 @@ struct EventViewConstants {
 	
 	struct AlertView {
 		static let defaultMessgae = NSLocalizedString("api_failure", comment: "Default api failure message")
+		static let emptyDataMessgae = NSLocalizedString("api_empty_data_messgae", comment: "Api failure message for empty data")
 		static let alertTitle = NSLocalizedString("alert_error_title", comment: "Alert title for failure")
 		static let alertOkayButtonTitle = NSLocalizedString("alert_okay_title", comment: "Alert okay button title for failure")
 	}

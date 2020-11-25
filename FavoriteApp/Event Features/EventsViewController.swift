@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Network
+
 
 class EventsViewController: UITableViewController {
 	
@@ -15,10 +17,9 @@ class EventsViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		configureUI()
 		bindViewModel()
-		viewModel.loadEvetns()
+		viewModel.initNetworkCheck()
 	}
 	
 	// MARK: - View Setup
@@ -48,9 +49,14 @@ class EventsViewController: UITableViewController {
 			}
 		}
 	}
+	
 	// MARK: - TableView Button Action
-	@objc func updateFavoriteState(sender: UIButton){
+	@objc func updateFavoriteState(sender: UIButton) {
 		viewModel.updateFavoriteState(index: sender.tag)
+	}
+	
+	@objc func tryReloadAgain(sender: UIButton) {
+		viewModel.loadEvetns()
 	}
 }
 
@@ -68,8 +74,6 @@ extension EventsViewController {
 			return tableView.dequeueReusableCell(forIndexPath: indexPath) as EventTableViewCell
 		case .error(_):
 			return tableView.dequeueReusableCell(forIndexPath: indexPath) as InfoTableViewCell
-		case .empty:
-			return tableView.dequeueReusableCell(forIndexPath: indexPath) as InfoTableViewCell
 		}
 	}
 	
@@ -77,31 +81,28 @@ extension EventsViewController {
 		
 		switch viewModel.eventsCells.value[indexPath.row] {
 		case .normal(let model):
+
 			guard let cell = cell as? EventTableViewCell else { return }
 			cell.favoriteBtn.tag = indexPath.row
 			cell.favoriteBtn.addTarget(self, action: #selector(updateFavoriteState(sender:)), for: .touchUpInside)
-			
 			cell.model = model
 			
 			if self.viewModel.isLastIndexOfTable(index: indexPath.row) {
-				self.viewModel.loadEvetns()
+				viewModel.isInternetAvailable ? self.viewModel.loadEvetns() : DLog("No internet - Data already loaded")
 			}
+			
 		case .error(let message):
 			guard let cell = cell as? InfoTableViewCell else { return }
-			cell.isUserInteractionEnabled = false
 			cell.infoMessage.text = message
-			
-		case .empty:
-			guard let cell = cell as? InfoTableViewCell else { return }
-			cell.isUserInteractionEnabled = false
-			cell.infoMessage.text = "No events available"
-			
+			cell.infoImage.image = UIImage(systemName: "exclamationmark.triangle")
+			cell.retryBtn.addTarget(self, action: #selector(tryReloadAgain(sender:)), for: .touchUpInside)
+
 		}
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 		let footerView = TableViewPageLoader.instanceFromNib()
-		viewModel.showLoadingHud.value ? footerView.loader.startAnimating(): footerView.loader.stopAnimating()
+		viewModel.showLoadingHud.value ? footerView.loader.startAnimating() : footerView.loader.stopAnimating()
 		return footerView
 	}
 }

@@ -11,7 +11,7 @@ class EventService: BaseService {
 	
 	func fetch (completionHandler: @escaping (Result<EventServiceResponse, FetchError>) -> Void) {
 		
-		fetch(listOf: EventServiceResponse.self, withURL: url(withPath: ServiceConstants.url.events)) { (result) in
+		fetch(listOf: EventServiceResponse.self, withURL: url(withPath: ServiceConstants.urls.events)) { (result) in
 			switch result {
 			case .success(let events):
 				completionHandler(Result.success(events))

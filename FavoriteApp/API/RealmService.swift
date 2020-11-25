@@ -9,33 +9,23 @@
 import Foundation
 import RealmSwift
 
-@objcMembers class EventData: Object{
-	dynamic var id: String = ""
-	dynamic var title: String = ""
-	dynamic var image: String = ""
-	dynamic var startDate: Int = 0
-	dynamic var isFavorite: Bool = false
-	override static func primaryKey() -> String? {
-		return "id"
-	}
-	
-}
 extension Object {
 	func updateToRealm() {
 		RealmService.instance.update(self)
 	}
 }
+
 class RealmService {
 	
 	static let instance = RealmService()
 	
-	var favoriteProducts: Results<EventData> {
+	var events: Results<EventData> {
 		get {
-			return fetchFavorites()
+			return fetchEvents()
 		}
 	}
 	
-	private func fetchFavorites() -> Results<EventData> {
+	private func fetchEvents() -> Results<EventData> {
 		let results = self.getDataFromRealm(ofType: EventData.self)
 		return results
 	}
@@ -89,7 +79,7 @@ extension RealmService{
 	func updateState(event: Event){
 		do {
 			try realm.write{
-				favoriteProducts.filter{$0.id == event.id}.first?.isFavorite = event.isFavorite ?? false
+				events.filter{$0.id == event.id}.first?.isFavorite = event.isFavorite ?? false
 			}
 		} catch  {
 			DLog("Error while updating favorite event to realm database")

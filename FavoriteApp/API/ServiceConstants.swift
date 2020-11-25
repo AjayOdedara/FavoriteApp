@@ -11,7 +11,12 @@ struct ServiceConstants {
 	
 	static let base = "https://us-central1-techtaskapi.cloudfunctions.net"
 	
-	public struct url {
-		public static let events = "/events"
+	public struct urls {
+		public static let events = "/events?"
+	}
+	
+	public struct parameters {
+		static let page: String = "page"
+		static let limit: String = "limit"
 	}
 }

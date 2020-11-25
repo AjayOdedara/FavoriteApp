@@ -3,7 +3,9 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,37 +21,36 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Bff-Wl-zlI">
                             <rect key="frame" x="15" y="50" width="351" height="346"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-4l-yxu">
-                                    <rect key="frame" x="0.0" y="0.5" width="351" height="200"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="exclamationmark.triangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JYl-4l-yxu">
+                                    <rect key="frame" x="100.5" y="1" width="150" height="148"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" systemColor="systemGrayColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="201" id="FtU-hs-TFa"/>
-                                        <constraint firstAttribute="width" secondItem="JYl-4l-yxu" secondAttribute="height" multiplier="117:67" id="c1C-1d-li8"/>
+                                        <constraint firstAttribute="height" constant="150" id="FtU-hs-TFa"/>
+                                        <constraint firstAttribute="width" secondItem="JYl-4l-yxu" secondAttribute="height" multiplier="1:1" id="c1C-1d-li8"/>
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-Zn-JK6">
-                                    <rect key="frame" x="157" y="251" width="37" height="95"/>
+                                    <rect key="frame" x="100.5" y="200" width="150" height="146"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WaD-jo-bvZ">
-                                            <rect key="frame" x="16.5" y="0.0" width="4.5" height="29.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3tf-is-0g5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="4.5" height="29.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="bottom" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I1P-p6-Z0d">
-                                            <rect key="frame" x="0.0" y="39.5" width="37" height="55.5"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KG-zD-4ds">
-                                                    <rect key="frame" x="0.0" y="0.0" width="37" height="55.5"/>
-                                                    <state key="normal" title="Retry"/>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3tf-is-0g5">
+                                            <rect key="frame" x="73" y="0.0" width="4.5" height="101"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KG-zD-4ds">
+                                            <rect key="frame" x="0.0" y="111" width="150" height="35"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="J96-DT-FVG"/>
+                                                <constraint firstAttribute="width" constant="150" id="RuE-ng-ASD"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <state key="normal" title="Try again" image="exclamationmark.arrow.circlepath" catalog="system">
+                                                <color key="titleColor" name="AccentColor"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -82,6 +83,13 @@
         </view>
     </objects>
     <resources>
-        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.arrow.circlepath" catalog="system" width="128" height="110"/>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

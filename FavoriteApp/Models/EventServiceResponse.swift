@@ -11,7 +11,7 @@ import Foundation
 class EventServiceResponse: Decodable {
 	
 	let page, pageSize, total: Int
-	let events: [Event]
+	let events: [Event]?
 	
 	enum CodingKeys: String, CodingKey {
 		case page, pageSize, total
