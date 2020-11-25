@@ -26,6 +26,17 @@ class Event: Decodable {
 	var image: String
 	var startDate: Int
 	var isFavorite: Bool?
+	
+	var formattedDataAndTime: String{
+		
+		let date = Date(timeIntervalSince1970: TimeInterval(startDate))
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US")
+		dateFormatter.dateFormat = "EEEE, HH:mm"
+		
+		return dateFormatter.string(from: date)
+	}
 	var imageUrl: URL? {
 		return URL(string: image)
 	}

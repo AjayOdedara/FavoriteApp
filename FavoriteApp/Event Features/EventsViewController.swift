@@ -60,7 +60,7 @@ class EventsViewController: UITableViewController {
 	}
 }
 
-// MARK: - TableView DataSource
+// MARK: - TableView DWorldataSource
 extension EventsViewController {
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

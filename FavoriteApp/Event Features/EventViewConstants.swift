@@ -9,14 +9,19 @@ import Foundation
 struct EventViewConstants {
 	
 	struct View {
-		static let navigationTitle = NSLocalizedString("event_list_navigation_bar_title", comment: "events navigation title")
+		static let navigationTitle = "event_list_navigation_bar_title".localized
+	}
+	
+	struct EventCellView {
+		static let favoriteState = "event_favorite_state".localized
+		static let unFavoriteState = "event_unfavorite_state".localized
 	}
 	
 	struct AlertView {
-		static let defaultMessgae = NSLocalizedString("api_failure", comment: "Default api failure message")
-		static let emptyDataMessgae = NSLocalizedString("api_empty_data_messgae", comment: "Api failure message for empty data")
-		static let alertTitle = NSLocalizedString("alert_error_title", comment: "Alert title for failure")
-		static let alertOkayButtonTitle = NSLocalizedString("alert_okay_title", comment: "Alert okay button title for failure")
+		static let defaultMessgae = "api_failure".localized
+		static let emptyDataMessgae = "api_empty_data_messgae".localized
+		static let alertTitle = "alert_error_title".localized
+		static let alertOkayButtonTitle = "alert_okay_title".localized
 	}
 	
 	struct CellIdentifier {

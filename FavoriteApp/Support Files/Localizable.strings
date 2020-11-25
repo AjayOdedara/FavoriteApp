@@ -11,6 +11,10 @@
 "api_failure" = "Loading failed, check network connection";
 "url_failure" = "Failed to load data from url";
 
+// EventCellView
+"event_favorite_state" = "Favorite";
+"event_unfavorite_state" = "Unfavorite";
+
 "api_empty_data_messgae" = "No events available";
 "alert_error_title" = "Error";
 "alert_okay_title" = "Ok";
