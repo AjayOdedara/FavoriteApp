@@ -23,7 +23,7 @@ If attempting to run this code on future versions of Swift, Xcode, or iOS some a
 The following steps will guide you through the process of running this application on your local machine, and device.
 
 1. Ensure you have [Xcode 11.0](https://developer.apple.com/download/) installed
-2. Ensure you have [SwiftLint](https://github.com/realm/SwiftLint) installed
+2. Ensure you have [SwiftLint](https://github.com/realm/SwiftLint) installed ( to opt out remove it from Target > Build Phases > SwiftLint )
 3. Checkout this repository
 4. Open `WiproTest.xcodeproj` with Xcode
 5. Go to the project settings, and change the code signing team to your own
