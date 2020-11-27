@@ -5,7 +5,6 @@
 //  Created by Ajay Odedra on 20/11/20.
 //
 
-
 import UIKit
 
 class InfoTableViewCell: UITableViewCell, Reusable {

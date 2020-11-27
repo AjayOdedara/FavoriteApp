@@ -5,28 +5,21 @@
 //  Created by Ajay Odedra on 21/11/20.
 //
 
-
 import Foundation
 import RealmSwift
-
-extension Object {
-	func updateToRealm() {
-		RealmService.instance.update(self)
-	}
-}
 
 class RealmService {
 	
 	static let instance = RealmService()
 	
-	var events: Results<EventData> {
+	var events: Results<EventRealmData> {
 		get {
 			return fetchEvents()
 		}
 	}
 	
-	private func fetchEvents() -> Results<EventData> {
-		let results = self.getDataFromRealm(ofType: EventData.self)
+	private func fetchEvents() -> Results<EventRealmData> {
+		let results = self.getDataFromRealm(ofType: EventRealmData.self)
 		return results
 	}
 	
@@ -58,32 +51,27 @@ class RealmService {
 	}
 }
 
-extension RealmService{
+extension RealmService {
 	
-	func addOrUpdateEvents(event: Event){
-		let data = EventData()
+	func updateOffline(data event: Event) {
+		
+		let data = EventRealmData()
 		data.id = event.id
 		data.title = event.title
 		data.image = event.image
 		data.startDate = event.startDate
 		data.isFavorite = event.isFavorite ?? false
-		do {
-			try realm.write{
-				realm.add(data, update: .all)
-			}
-		} catch  {
-			DLog("Error while Add/Update event object to realm database")
-		}
-		//data.updateToRealm()
+		self.update(data)
 	}
-	func updateState(event: Event){
+	
+	func updateStateOf(event: Event) {
+		
 		do {
-			try realm.write{
-				events.filter{$0.id == event.id}.first?.isFavorite = event.isFavorite ?? false
+			try realm.write {
+				events.filter {$0.id == event.id}.first?.isFavorite = event.isFavorite ?? false
 			}
-		} catch  {
+		} catch {
 			DLog("Error while updating favorite event to realm database")
 		}
-		
 	}
 }

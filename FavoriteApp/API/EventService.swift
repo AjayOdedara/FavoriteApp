@@ -9,7 +9,7 @@ import Foundation
 
 class EventService: BaseService {
 	
-	func fetch (completionHandler: @escaping (Result<EventServiceResponse, FetchError>) -> Void) {
+	func fetch (completionHandler: @escaping (Result<EventServiceResponse, ServiceFetchError>) -> Void) {
 		
 		fetch(listOf: EventServiceResponse.self, withURL: url(withPath: ServiceConstants.urls.events)) { (result) in
 			switch result {

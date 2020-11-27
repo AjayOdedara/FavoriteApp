@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FetchError: Error {
+enum ServiceFetchError: Error {
 	case invalidJSON
 	case decodingError
 	case invalidURL

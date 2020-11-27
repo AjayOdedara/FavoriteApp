@@ -8,7 +8,6 @@
 import UIKit
 import Network
 
-
 class EventsViewController: UITableViewController {
 	
 	lazy var viewModel: EventViewModel = {
@@ -19,7 +18,7 @@ class EventsViewController: UITableViewController {
 		super.viewDidLoad()
 		configureUI()
 		bindViewModel()
-		viewModel.initNetworkCheck()
+		viewModel.initNetworkCheckAndLoadData()
 	}
 	
 	// MARK: - View Setup
@@ -52,7 +51,7 @@ class EventsViewController: UITableViewController {
 	
 	// MARK: - TableView Button Action
 	@objc func updateFavoriteState(sender: UIButton) {
-		viewModel.updateFavoriteState(index: sender.tag)
+		viewModel.updateEventFavoriteState(at: sender.tag)
 	}
 	
 	@objc func tryReloadAgain(sender: UIButton) {
@@ -101,7 +100,8 @@ extension EventsViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		let footerView = TableViewPageLoader.instanceFromNib()
+		
+		guard let footerView = TableViewPageLoader.instanceFromNib() else { return UIView() }
 		viewModel.showLoadingHud.value ? footerView.loader.startAnimating() : footerView.loader.stopAnimating()
 		return footerView
 	}

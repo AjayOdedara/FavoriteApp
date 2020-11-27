@@ -9,9 +9,10 @@ import Foundation
 
 class BaseService {
 	lazy var page = 1
-	var session: URLSession
+	var session: URLSessionProtocol
+	private var task: URLSessionDataTaskProtocol?
 	
-	init(session: URLSession = URLSession.shared) {
+	init(session: URLSessionProtocol = URLSession.shared) {
 		self.session = session
 	}
 	
@@ -28,14 +29,14 @@ class BaseService {
 	*/
 	func fetch<T: Decodable>(listOf representable: T.Type,
 													 withURL url: URL?,
-													 completionHandler: @escaping (Result<T, FetchError>) -> Void) {
+													 completionHandler: @escaping (Result<T, ServiceFetchError>) -> Void) {
 		
 		guard let url = url else {
 			completionHandler(.failure(.invalidURL))
 			return
 		}
 		
-		let task = URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { (data, _, error) -> Void in
+		task = session.data(with: url) { (data, _, error) -> Void in
 			
 			guard error == nil else {
 				completionHandler(.failure(.networkFailed))
@@ -58,9 +59,11 @@ class BaseService {
 				completionHandler(.failure(.decodingError))
 			}
 			
-		})
+		}
 		
-		task.resume()
+		task?.resume()
 	}
-	
+	internal func cancel() {
+		task?.cancel()
+	}
 }
