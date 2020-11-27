@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseService {
-	lazy var page = 1
+	lazy var page = 0
 	var session: URLSessionProtocol
 	private var task: URLSessionDataTaskProtocol?
 	
