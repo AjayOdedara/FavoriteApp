@@ -1,6 +1,6 @@
 # Favorite Event
 
-iPhone app in Swift that presents one view controller containing a table view that shows a list of events. The cells of the list should display information about an event as follows.
+iPhone app in Swift that presents one view controller containing a table view that shows a list of events. The cells of the list should display information about an event as follows. Update Event state (Favorite & Unfavorite)
 
 <p align="center">
   <img width=35% src="https://github.com/AjayOdedara/FavoriteApp/blob/main/eventPage.png" />
