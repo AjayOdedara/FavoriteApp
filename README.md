@@ -11,7 +11,7 @@ iPhone app in Swift that presents one view controller containing a table view th
 - [About](#about)
 - [Quick Start](#quick-start)
 - [Features](#features)
-- [Credits](#credits)
+
 ## About
 
 This mobile application is built using Swift 5.0 and Xcode 11.0 for iOS devices running iOS 13.0.
@@ -25,7 +25,7 @@ The following steps will guide you through the process of running this applicati
 1. Ensure you have [Xcode 11.0](https://developer.apple.com/download/) installed
 2. Ensure you have [SwiftLint](https://github.com/realm/SwiftLint) installed ( to opt out remove it from Target > Build Phases > SwiftLint )
 3. Checkout this repository
-4. Open `WiproTest.xcodeproj` with Xcode
+4. Open `FavoriteApp.xcodeproj` with Xcode
 5. Go to the project settings, and change the code signing team to your own
 6. Wait for the Swift Packages to download if not.
 
